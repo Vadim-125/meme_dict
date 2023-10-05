@@ -1,0 +1,73 @@
+import random
+import time
+print('*' * 10, 'Игра таинственного торговца', '*' * 10)
+
+#Карточки игрока
+
+import random, time
+goblin = {
+    "Здоровье": 2,
+    "Сила": 1,
+}
+elf = {
+    "Здоровье": 3,
+    "Сила": 2,
+}
+ork = {
+    "Здоровье": 4,
+    "Сила": 3
+}
+demon = {
+    "Здоровье": 5,
+    "Сила": 4
+}
+dragon = {
+    "Здоровье": 9,
+    "Сила": 8
+}
+human = {
+    "Здоровье": 10,
+    "Сила": 8
+}
+cards = [human, demon, elf]
+cards_comp = [goblin ,ork , dragon]
+
+#Игра
+
+cards = [dragon,elf,ork]
+print('Ваши карты:')
+print('Дракон', dragon)
+print('Эльф', elf)
+print('Орк', ork)
+card = input('Ваш ход, какую карту выберете?')
+card_comp = random.choice(cards)
+if card == 'Дракон':
+    print('Ваша карта:', dragon)
+    card = dragon
+elif card == 'Эльф':
+    print('Ваша карта:', elf)
+    card = elf
+elif card == 'Орк':
+    print('Ваша карта:', ork)
+    card = ork
+time.sleep(1)
+print('Карта противника:', card_comp)
+while True:
+    print('Вы атакуете!')
+    time.sleep(2)
+    if card['Сила'] >= card_comp['Здоровье']:
+        print('Противник повержен!')
+        break
+    if card['Сила'] < card_comp['Здоровье']:
+        print('Противник ранен ранены')
+        card_comp['Здоровье'] = card_comp['Здоровье'] - card['Сила']
+        print(card_comp)
+        print('Ход противника!')
+        time.sleep(2)
+        if card_comp['Сила'] >= card['Здоровье']:
+            print('Вы проиграли')
+            break
+        elif card_comp['Сила'] < card['Здоровье']:
+            print('Вы ранены ранен')
+            card['Здоровье'] = card['Здоровье'] - card_comp['Сила']
+            print(card)
